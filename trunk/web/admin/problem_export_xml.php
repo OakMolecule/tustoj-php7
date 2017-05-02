@@ -126,12 +126,12 @@ function getSolution($pid,$lang){
 function fixurl($img_url){
    $img_url= html_entity_decode( $img_url,ENT_QUOTES,"UTF-8");
    
-   if (substr($img_url,0,7)!="http://"){
-     if(substr($img_url,0,1)=="/"){
-	     	$ret='http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$img_url;
+	if (substr($img_url,0,7)!="http://"){
+	  if(substr($img_url,0,1)=="/"){
+	     	$ret='http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$img_url;
      }else{
      		$path= dirname($_SERVER['PHP_SELF']);
-	      $ret='http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;
+	      $ret='http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;
      }
    }else{
    	$ret=$img_url;
@@ -140,7 +140,6 @@ function fixurl($img_url){
 } 
 function image_base64_encode($img_url){
     $img_url=fixurl($img_url);
-    if (substr($img_url,0,7)!="http://") return false;
 	$handle = @fopen($img_url, "rb");
 	if($handle){
 		$contents = stream_get_contents($handle);
@@ -221,7 +220,7 @@ if (isset($_POST ['do'])||isset($_GET['cid'])) {
 	?>
    
 <fps version="1.2" url="https://github.com/zhblue/freeproblemset/">
-	<generator name="HUSTOJ" url="https://github.com/zhblue/hustoj/"/>
+	<generator name="TUSTOJ" url="https://github.com/zhblue/tustoj/"/>
 	<?php
 	while ( $row = mysqli_fetch_object ( $result ) ) {
 		

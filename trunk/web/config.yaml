@@ -1,4 +1,4 @@
-name: hustoj
+name: tustoj
 version: 1
 handle:
 - compress:  if ( out_header["Content-type"]=="text/javascript" ) compress

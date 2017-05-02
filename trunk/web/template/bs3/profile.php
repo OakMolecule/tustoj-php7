@@ -46,7 +46,7 @@ header("Pragma: no-cache");
             $profile.= "<li><a href=".$path_fix."login_qq.php>$MSG_LOGIN(QQ)</a></li>&nbsp;";
                 }
 				$profile.= "<li><a href=".$path_fix."loginpage.php>$MSG_LOGIN</a></li>&nbsp;";
-				if($OJ_LOGIN_MOD=="hustoj"){
+				if($OJ_LOGIN_MOD=="tustoj"){
 					$profile.= "<li><a href=".$path_fix."registerpage.php>$MSG_REGISTER</a></li>&nbsp;";
 				}
 			}

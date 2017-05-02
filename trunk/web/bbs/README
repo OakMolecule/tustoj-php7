@@ -1,5 +1,5 @@
 please install a phpBB here or edit /bbs.php to relink OJ to your BBS
-to make more integretion with HUSTOJ,you can modify phpBB3 as follow:
+to make more integretion with TUSTOJ,you can modify phpBB3 as follow:
 
 1. search "RE:" in posting.php, add 3 lines after the condition block which "RE:" in .
 //-------------------

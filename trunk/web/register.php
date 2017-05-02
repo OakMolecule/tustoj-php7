@@ -14,7 +14,7 @@ if($OJ_VCODE&&($vcode!= $_SESSION["vcode"]||$vcode==""||$vcode==null) ){
 	$err_str=$err_str."Verification Code Wrong!\\n";
 	$err_cnt++;
 }
-if($OJ_LOGIN_MOD!="hustoj"){
+if($OJ_LOGIN_MOD!="tustoj"){
 	$err_str=$err_str."System do not allow register.\\n";
 	$err_cnt++;
 }

@@ -91,7 +91,7 @@ if (isset($OJ_ONLINE)&&$OJ_ONLINE){
 ?>
 
 <li>
-	<a class='btn btn-primary' href="https://github.com/zhblue/hustoj/" target="_blank"><b>HUSTOJ</b></a>
+	<a class='btn btn-primary' href="https://github.com/zhblue/hustoj/" target="_blank"><b>TUSTOJ</b></a>
 <li>
 	<a class='btn btn-primary' href="https://github.com/zhblue/freeproblemset/" target="_blank"><b>FreeProblemSet</b></a>
 <li>

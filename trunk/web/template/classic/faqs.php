@@ -10,7 +10,7 @@
 <div id=main>
 <hr>
 <center>
-  <font size="+3">HUSTOJ Online Judge FAQ</font>
+  <font size="+3">TUSTOJ Online Judge FAQ</font>
 </center>
 <hr>
 <p><font color=green>Q</font>:What is the compiler the judge is using and what are the compiler options?<br>
@@ -139,15 +139,15 @@ If you can't, then please <a href=registerpage.php>register</a> an id with passw
 <br>
 <hr>
 <center>
-  <font color=green size="+2">Any questions/suggestions please post to <a href="bbs.php">HUSTOJ BBS</a></font>
+  <font color=green size="+2">Any questions/suggestions please post to <a href="bbs.php">TUSTOJ BBS</a></font>
 </center>
 <hr>
 <center>
   <table width=100% border=0>
     <tr>
       <td align=right width=65%>
-      <a href = "index.php"><font color=red>HUSTOJ</font></a> 
-      <a href = "http://code.google.com/p/hustoj/source/detail?r=486"><font color=red>R1842+</font></a></td>
+      <a href = "index.php"><font color=red>TUSTOJ</font></a> 
+      <a href = "http://code.google.com/p/tustoj/source/detail?r=486"><font color=red>R1842+</font></a></td>
     </tr>
   </table>
 </center>

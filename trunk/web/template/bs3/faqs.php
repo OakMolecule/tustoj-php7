@@ -159,15 +159,15 @@ If you can't, then please <a href=registerpage.php>register</a> an id with passw
 <br>
 <hr>
 <center>
-  <font color=green size="+2">Any questions/suggestions please post to <a href="bbs.php">HUSTOJ BBS</a></font>
+  <font color=green size="+2">Any questions/suggestions please post to <a href="bbs.php">TUSTOJ BBS</a></font>
 </center>
 <hr>
 <center>
   <table width=100% border=0>
     <tr>
       <td align=right width=65%>
-      <a href = "index.php"><font color=red>HUSTOJ</font></a> 
-      <a href = "https://github.com/zhblue/hustoj"><font color=red>16.12.02</font></a></td>
+      <a href = "index.php"><font color=red>TUSTOJ</font></a> 
+      <a href = "https://github.com/zhblue/tustoj"><font color=red>16.12.02</font></a></td>
     </tr>
   </table>
 </center>
