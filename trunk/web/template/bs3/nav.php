@@ -1,77 +1,55 @@
-<?php 
-	$url=basename($_SERVER['REQUEST_URI']);
-	$dir=basename(getcwd());
-	if($dir=="discuss3") $path_fix="../";
-	else $path_fix="";
+<?php
+$url=basename($_SERVER['REQUEST_URI']);
+$dir=basename(getcwd());
+if($dir=="discuss3") $path_fix="../";
+else $path_fix="";
+
+if(file_exists("./admin/msg.txt"))
+    $view_marquee_msg=file_get_contents($OJ_SAE?"saestor://web/msg.txt":"./admin/msg.txt");
+if(file_exists("../admin/msg.txt"))
+    $view_marquee_msg=file_get_contents($OJ_SAE?"saestor://web/msg.txt":"../admin/msg.txt");
 ?>
-      <!-- Static navbar -->
-      <nav class="navbar navbar-default" role="navigation" >
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?php echo $OJ_HOME?>"><?php echo $OJ_NAME?></a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
+
+<nav class="navbar navbar-default " style="color: #FFFFFF;"  role="navigation">
+    <div class="main-header text-center"><p>通知</p>
+        <img src="img/small_point.png"/><p><?php echo $view_marquee_msg; ?></p></div>
+    <div class="container-fluid navbar-shadow" id="white">
+        <div class="navbar-header">
+            <a class="navbar-brand">天津科技大学</a>
+        </div>
+        <div>
             <ul class="nav navbar-nav">
-	      <?php $ACTIVE="class='active'"?>
-              <li <?php if ($dir=="discuss") echo " $ACTIVE";?>><a href="<?php echo $path_fix?>bbs.php"><?php echo $MSG_BBS?></a></li>
-	      <li <?php if ($url=="faqs.php") echo " $ACTIVE";?>><a href="<?php echo $path_fix?>faqs.php"><?php echo $MSG_FAQ?></a></li>
-              <li <?php if ($url=="problemset.php") echo " $ACTIVE";?>><a href="<?php echo $path_fix?>problemset.php"><?php echo $MSG_PROBLEMS?></a></li>
-              <li <?php if ($url=="status.php") echo " $ACTIVE";?>><a href="<?php echo $path_fix?>status.php"><?php echo $MSG_STATUS?></a></li>
-              <li <?php if ($url=="ranklist.php") echo " $ACTIVE";?>><a href="<?php echo $path_fix?>ranklist.php"><?php echo $MSG_RANKLIST?></a></li>
-              <li <?php if ($url=="contest.php") echo " $ACTIVE";?>><a href="<?php echo $path_fix?>contest.php"><?php echo $MSG_CONTEST?></a></li>
-<?php if(isset($_GET['cid'])){
-	$cid=intval($_GET['cid']);
-?>
-	      <li><a>[</a></li>
-              <li class="active" ><a href="<?php echo $path_fix?>contest.php?cid=<?php echo $cid?>">
-			<?php echo $MSG_PROBLEMS?>
-	      </a></li>
-               <li  class="active" ><a href="<?php echo $path_fix?>status.php?cid=<?php echo $cid?>">
-			<?php echo $MSG_STATUS?>
-	      </a></li>
-              <li  class="active" ><a href="<?php echo $path_fix?>contestrank.php?cid=<?php echo $cid?>">
-			<?php echo $MSG_RANKLIST?>
-	      </a></li>
-              <!--<li  class="active" ><a href="<?php echo $path_fix?>contestrank-oi.php?cid=<?php echo $cid?>">
-			OI<?php echo $MSG_RANKLIST?>
-	      </a></li>-->
-              <li  class="active" ><a href="<?php echo $path_fix?>conteststatistics.php?cid=<?php echo $cid?>">
-			<?php echo $MSG_STATISTICS?>
-	      </a></li>
-	      <li><a>]</a></li>
-<?php }?>
-              <li <?php if ($url=="recent-contest.php") echo " $ACTIVE";?>><a href="<?php echo $path_fix?>recent-contest.php"><?php echo $MSG_RECENT_CONTEST?></a></li>
-              <!--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-	-->
+                <li>
+                    <a href="<?php echo $OJ_HOME?>"><?php echo $MSG_HOME?></a>
+                </li>
+                <li>
+                    <a <?php if ($url=="problemset.php") echo "$ACTIVE";?>' href="problemset.php"><?php echo $MSG_PROBLEMS?></a>
+                </li>
+                <li>
+                    <a <?php if ($url=="status.php") echo "$ACTIVE";?>' href="status.php"><?php echo $MSG_STATUS?> </a>
+                </li>
+                <li>
+                    <a <?php if ($url=="ranklist.php") echo "$ACTIVE";?>' href="ranklist.php"><?php echo $MSG_RANKLIST?></a>
+                </li>
+                <li>
+                    <a <?php if ($url=="contest.php") echo "$ACTIVE";?>'  href="contest.php"><?php echo $MSG_CONTEST?></a>
+                </li>
+                <li>
+                    <a <?php if ($url==(isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php")) echo " $ACTIVE";?>' href="<?php echo isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php"?>"><?php echo "$MSG_FAQ"?></a>
+                </li>
             </ul>
-	    <ul class="nav navbar-nav navbar-right">
-	    <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="profile">Login</span><span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-<script src="<?php echo $path_fix."template/$OJ_TEMPLATE/profile.php?".rand();?>" ></script>
-              <!--<li><a href="../navbar-fixed-top/">Fixed top</a></li>-->
-	    </ul>
-	    </li>
+
+            <ul class="nav navbar-nav navbar-right">
+            <script src="/include/profile.php?<?php echo rand();?>" ></script>
             </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
+            <!--
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"> SIGN IN</a></li>
+            </ul>
+            -->
+        </div>
+
+    </div>
+</nav>
 
 

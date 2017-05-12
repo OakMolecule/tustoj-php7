@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $OJ_LANG?>">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +8,8 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Login</title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <title><?php echo $MSG_LOGIN?></title>
+    <?php include("template/$OJ_TEMPLATE/css.php");?>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +22,7 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
 
@@ -44,7 +44,7 @@
 	<a class="btn btn-default btn-block" href="lostpassword.php"><?php echo $MSG_LOST_PASSWORD; ?></a>
 	</div>
 	</div>
-</form>					
+</form>
       </div>
 
 
@@ -54,6 +54,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/js.php");?>
   </body>
 </html>
