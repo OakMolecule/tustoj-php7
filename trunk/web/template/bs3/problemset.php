@@ -28,22 +28,6 @@
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
         <center>
-            <nav class="center"><ul class="pagination">
-                    <li class="page-item"><a href="problemset.php?page=1">&lt;&lt;</a></li>
-                    <?php
-                    if(!isset($page)) $page=1;
-                    $page=intval($page);
-                    $section=8;
-                    $start=$page>$section?$page-$section:1;
-                    $end=$page+$section>$view_total_page?$view_total_page:$page+$section;
-                    for ($i=$start;$i<=$end;$i++){
-                        echo "<li class='".($page==$i?"active ":"")."page-item'>
-        <a href='problemset.php?page=".$i."'>".$i."</a></li>";
-                    }
-                    ?>
-                    <li class="page-item"><a href="problemset.php?page=<?php echo $view_total_page?>">&gt;&gt;</a></li>
-                </ul></nav>
-
             <table>
                 <tr align='center' class='evenrow'><td width='5'></td>
                     <td  colspan='1'>
@@ -90,11 +74,26 @@
                 }
                 ?>
                 </tbody>
-            </table></center>
+            </table>
+            <ul class="pagination">
+                <li class="page-item"><a href="problemset.php?page=1">&lt;&lt;</a></li>
+                <?php
+                if(!isset($page)) $page=1;
+                $page=intval($page);
+                $section=8;
+                $start=$page>$section?$page-$section:1;
+                $end=$page+$section>$view_total_page?$view_total_page:$page+$section;
+                for ($i=$start;$i<=$end;$i++){
+                    echo "<li class='".($page==$i?"active ":"")."page-item'>
+                <a href='problemset.php?page=".$i."'>".$i."</a></li>";
+                }
+                ?>
+                <li class="page-item"><a href="problemset.php?page=<?php echo $view_total_page?>">&gt;&gt;</a></li>
+            </ul>
+        </center>
     </div>
-
 </div> <!-- /container -->
-
+<?php include("template/$OJ_TEMPLATE/footer.php");?>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

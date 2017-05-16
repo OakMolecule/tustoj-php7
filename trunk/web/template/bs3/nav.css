@@ -5,14 +5,15 @@ body,div,ul,li,p,{
 
 .main-header{
     width:100%;
-    padding:2%;
+    padding:10px;
     color:#ffffff;
     font-size: 20px;
     background-image: url(/img/background/14.jpg);
-    background-size: 100% 105%;
+    background-size:cover;
+    background-position: 50% 50%;
 }
 .main-header p{
-    margin: 2% 0%;
+    margin: 1% 0%;
 }
 
 .navbar-shadow {
@@ -20,6 +21,7 @@ body,div,ul,li,p,{
     -moz-box-shadow: 0px -6px 7px 0px rgba(0,0,0,0.45);
     box-shadow: 0px -6px 7px 0px rgba(0,0,0,0.45);
     background-color: #2c3d4f;
+
 }
 
 .min-height
@@ -30,22 +32,50 @@ body,div,ul,li,p,{
     margin-bottom: 20px;
 
 }
-
-#white a{
-    color:#ccc;
+#white a {
+    color: #fff;
 }
 
-.nav_margin_right{
-    margin-right: 50px;
+.widget{background:#fff;padding:10px 30px;margin-bottom:10px}
+.title{margin:10px 0px;}
+
+.padding{
+
+    padding:0px;
+}
+.button-right{
+    float:right;
+    margin-right: 5px;
+    width: 150px;
 }
 
-.fa-sign-in:before{
-    color:#3498db;
-    margin-right: 10px;
+.footer{
+    background-color: grey;
+    height: 100px;
+    margin-top: 20px;
 }
-.fa-unlock:before{
-    color:#3498db;
-    margin-right: 10px;
+.footer .row{
+    margin: 15px auto;
 }
-.nav_font ul li a{
+.footer .row a{
+    margin-left: 20px;
+}
+
+label span{
+    font-size: 20px;
+    margin-right: 20px;
+}
+.hr{
+    margin-left:30px ;
+}
+
+.input_text_1{
+
+    min-height:200px;
+    margin:20px 0px;
+}
+
+.input_text_2{
+    min-height:70px;
+    margin:20px 0px;
 }
