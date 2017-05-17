@@ -17,6 +17,3 @@
 <link href="template/bs3/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="template/bs3/nav.css" type="text/css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto+Slab:300,400,700" rel="stylesheet">
-
-
-

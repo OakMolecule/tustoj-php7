@@ -29,138 +29,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body style="background-color: #fff">
 
 
 
 <div class="container">
     <?php include("template/$OJ_TEMPLATE/nav.php");?>
     <!-- Main component for a primary marketing message or call to action -->
-
-
-
-
-
-    <div class="container">
-
-        <form class="form-signin">
-            <!-- 用户名 -->
-            <div class="form-group">
-                <label for="user_id" class="col-md-2 control-label"><?php echo $MSG_USER_ID ?></label>
-                <div class="col-md-10">
-                    <input name="user_id" type="text" class="form-control" id="user_id"
-                           placeholder="请输入您的学号">
-                </div>
-            </div>
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
-
-    </div> <!-- /container -->
-
-
     <div class="jumbotron">
-        <form action="register.php" method="post">
-            <br><br>
-            <center><table>
-                    <!-- 用户名 -->
-                    <div class="form-group">
-                        <label for="user_id" class="col-md-2 control-label"><?php echo $MSG_USER_ID ?></label>
-                        <div class="col-md-10">
-                            <input name="user_id" type="text" class="form-control" id="user_id"
-                                   placeholder="请输入您的学号">
-                        </div>
-                    </div>
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <form action="register.php" method="post">
+                    <br><br>
+                    <center><table>
+                            <!-- 用户名 -->
+                            <div class="form-group">
+                                <label for="user_id" class="col-md-2 control-label"><?php echo $MSG_USER_ID ?></label>
+                                <div class="col-md-10">
+                                    <input name="user_id" type="text" class="form-control" id="user_id"
+                                           placeholder="请输入您的学号">
+                                </div>
+                            </div>
 
-                    <!-- 昵称 -->
-                    <div class="form-group">
-                        <label for="nick" class="col-md-2 control-label"><?php echo $MSG_NICK ?>:</label>
-                        <div class="col-md-10">
-                            <input name="nick" type="text" class="form-control" id="inputEmail"
-                                   placeholder="请输入您的昵称">
-                        </div>
-                    </div>
+                            <!-- 昵称 -->
+                            <div class="form-group">
+                                <label for="nick" class="col-md-2 control-label"><?php echo $MSG_NICK ?>:</label>
+                                <div class="col-md-10">
+                                    <input name="nick" type="text" class="form-control" id="inputEmail"
+                                           placeholder="请输入您的昵称">
+                                </div>
+                            </div>
 
-                    <!-- 密码 -->
-                    <div class="form-group">
-                        <label for="password" class="col-md-2 control-label"><?php echo $MSG_PASSWORD ?></label>
-                        <div class="col-md-10">
-                            <input name="password" type="password" class="form-control" id="inputPassword"
-                                   placeholder="请输入至少8位密码">
-                        </div>
-                    </div>
+                            <!-- 密码 -->
+                            <div class="form-group">
+                                <label for="password" class="col-md-2 control-label"><?php echo $MSG_PASSWORD ?></label>
+                                <div class="col-md-10">
+                                    <input name="password" type="password" class="form-control" id="inputPassword"
+                                           placeholder="请输入至少8位密码">
+                                </div>
+                            </div>
 
-                    <!-- 重复密码 -->
-                    <div class="form-group">
-                        <label for="rptpassword"
-                               class="col-md-2 control-label"><?php echo $MSG_REPEAT_PASSWORD ?></label>
-                        <div class="col-md-10">
-                            <input name="rptpassword" type="password" class="form-control" id="inputPassword"
-                                   placeholder="请再次输入密码">
-                        </div>
-                    </div>
+                            <!-- 重复密码 -->
+                            <div class="form-group">
+                                <label for="rptpassword"
+                                       class="col-md-2 control-label"><?php echo $MSG_REPEAT_PASSWORD ?></label>
+                                <div class="col-md-10">
+                                    <input name="rptpassword" type="password" class="form-control" id="inputPassword"
+                                           placeholder="请再次输入密码">
+                                </div>
+                            </div>
 
-                    <!-- 学校 -->
-                    <div class="form-group">
-                        <label for="school" class="col-md-2 control-label"><?php echo $MSG_SCHOOL ?></label>
-                        <div class="col-md-10">
-                            <select name="school" id="select111" class="form-control">
-                                <option><?php echo $MSG_TUST?></option>
-                            </select>
-                        </div>
-                    </div>
+                            <!-- 学校 -->
+                            <div class="form-group">
+                                <label for="school" class="col-md-2 control-label"><?php echo $MSG_SCHOOL ?></label>
+                                <div class="col-md-10">
+                                    <select name="school" id="select111" class="form-control">
+                                        <option><?php echo $MSG_TUST?></option>
+                                    </select>
+                                </div>
+                            </div>
 
-                    <!-- 电子邮件 -->
-                    <div class="form-group">
-                        <label for="email" class="col-md-2 control-label"><?php echo $MSG_EMAIL ?></label>
-                        <div class="col-md-10">
-                            <input name="email" type="email" class="form-control" id="inputEmail"
-                                   placeholder="请输入您的邮箱">
-                        </div>
-                    </div>
+                            <!-- 电子邮件 -->
+                            <div class="form-group">
+                                <label for="email" class="col-md-2 control-label"><?php echo $MSG_EMAIL ?></label>
+                                <div class="col-md-10">
+                                    <input name="email" type="email" class="form-control" id="inputEmail"
+                                           placeholder="请输入您的邮箱">
+                                </div>
+                            </div>
 
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-2">
-                            <button name="submit" type="submit" class="btn btn-primary"><?php echo $MSG_SUBMIT ?></button>
-                            <button name="reset" type="reset" class="btn btn-default"><?php echo $MSG_RESET ?></button>
-                        </div>
-                    </div>
-                </table></center>
-            <br><br>
-        </form>
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <button name="submit" type="submit" class="btn btn-primary"><?php echo $MSG_SUBMIT ?></button>
+                                    <button name="reset" type="reset" class="btn btn-default"><?php echo $MSG_RESET ?></button>
+                                </div>
+                            </div>
+                        </table></center>
+                    <br><br>
+                </form>
 
+            </div>
+        </div>
     </div>
+</div><!-- /container -->
+<div style="height: 20px;"></div>
+<?php include("oj-footer.php");?>
 
-</div> <!-- /container -->
 
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <?php include("template/$OJ_TEMPLATE/js.php");?>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<?php include("template/$OJ_TEMPLATE/js.php");?>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script language="javascript" type="text/javascript" src="include/jquery.flot.js"></script>
+    <script language="javascript" type="text/javascript" src="template/bs3/css/bootstrap-material-design/js/material.min.js">
+    </script>
+    <script src="template/bs3/css/bootstrap-material-design/js/ripples.min.js" ></script>
 
-<script language="javascript" type="text/javascript" src="include/jquery.flot.js"></script>
-<script language="javascript" type="text/javascript" src="template/bs3/css/bootstrap-material-design/js/material.min.js">
-</script>
-<script src="template/bs3/css/bootstrap-material-design/js/ripples.min.js" ></script>
-
-<script>
-    $("input").attr("class","form-control");
-    $.material.init();
-</script>
+    <script>
+        $("input").attr("class","form-control");
+        $.material.init();
+    </script>
 </body>
 </html>

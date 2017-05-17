@@ -93,7 +93,7 @@
         </center>
     </div>
 </div> <!-- /container -->
-<?php include("template/$OJ_TEMPLATE/footer.php");?>
+<?php include("oj-footer.php");?>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

@@ -79,14 +79,16 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-md-4 pull-right">
+                    <div class="row pull-right">
                         <div class="btn-group" role="group" aria-label="...">
                             <button class="btn <?php if($keymap == 'sublime') echo 'btn-success' ?>" type="button" id="sublime" value="sublime" onclick="keymap(this)">Sublime</button>
                             <button class="btn <?php if($keymap == 'vim') echo 'btn-success' ?>" type="button" id="vim" value="vim" onclick="keymap(this)">VIM</button>
                             <button class="btn <?php if($keymap == 'emacs') echo 'btn-success' ?>" type="button" id="emacs" value="emacs" onclick="keymap(this)">Emacs</button>
                         </div>
                     </div>
+
                 </form>
+
 
                 <textarea style="width:80%" cols=180 rows=20 id="source" name="source"><?php echo htmlentities($view_src,ENT_QUOTES,"UTF-8")?></textarea><br>
                 <?php echo $MSG_Input?>:<textarea style="width:30%" cols=40 rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
@@ -100,126 +102,127 @@
                     <button type="submit" class="btn btn-info btn-lg button-right">Submit</button>
                 </div>
             </div>
-        </div>
 
         <aside class="col-md-5">
             <div class="widget">
-                <h3 class="title">说明</h3>
+                <h3 class="title"><?php echo $MSG_Description; ?></h3>
                 <div>
-                    <p>的发送就打算科技司法冻结那块附件打算科技司法冻结那块附件打算科技司法冻结那块附件打算科技司法冻结那块附件打算科技司法冻结那块附件打算科技司法冻结那块附件打算科技司法冻结那块附件打算科技司法冻结那块附件三款你健康曾三次sk</p>
+                    <p><?php echo $row_problem->description?></p>
                 </div>
             </div>
             <hr class="hr">
             <div class="widget">
-                <h3 class="title">样例输入:</h3>
+                <h3 class="title"><?php echo $MSG_Sample_Input;?></h3>
                 <div>
-                    <p>的发送就打算科技</p>
+                    <p><?php echo $row_problem->sample_input?></p>
                 </div>
-                <h3 class="title">样例输出:</h3>
+                <h3 class="title"><?php echo $MSG_Sample_Output;?></h3>
                 <div>
-                    <p>的发送就打算科技</p>
+                    <p><?php echo $row_problem->sample_output?></p>
                 </div>
 
             </div>
             <hr class="hr">
             <div class="widget">
-                <h3 class="title">输入:</h3>
+                <h3 class="title"><?php echo $MSG_Input;?></h3>
                 <div >
-                    <p>QQ群：462694081</p>
+                    <p><?php echo $row_problem->input?></p>
                 </div>
-                <h3 class="title">输出:</h3>
+                <h3 class="title"><?php echo $MSG_Output;?></h3>
                 <div>
-                    <p>的发送就打算科技</p>
+                    <p><?php echo $row_problem->output?></p>
                 </div>
             </div>
-
         </aside>
-
-
     </div>
-    <div class="jumbotron">
-        <center>
-            <?php
-            if(strpos($_SERVER['HTTP_USER_AGENT'],'MSIE'))
-            {
-                $OJ_EDITE_AREA=false;
-            }
-            if($OJ_EDITE_AREA){
-            ?>
-            <script language="Javascript" type="text/javascript" src="edit_area/edit_area_full.js"></script>
-            <script language="Javascript" type="text/javascript">
-                editAreaLoader.init({
-                    id: "source"
-                    ,start_highlight: true
-                    ,allow_resize: "both"
-                    ,allow_toggle: true
-                    ,word_wrap: true
-                    ,language: "en"
-                    ,syntax: "cpp"
-                    ,font_size: "12"
-                    ,syntax_selection_allow: "basic,c,cpp,java,pas,perl,php,python,ruby"
-                    ,toolbar: "search, go_to_line, fullscreen, |, undo, redo, |, select_font,syntax_selection,|, change_smooth_selection, highlight, reset_highlight, word_wrap, |, help"
-                });
-            </script>
-            <?php }?>
-            <script src="include/checksource.js"></script>
-            <form id=frmSolution action="submit.php" method="post"
-                <?php if($OJ_LANG=="cn"){?>
-                    onsubmit="return checksource(document.getElementById('source').value);"
-                <?php }?>
 
-                <?php if (isset($id)){?>
-                  Problem <span class=blue><b><?php echo $id?></b></span>
-            <input id=problem_id type='hidden' value='<?php echo $id?>' name="id" ><br>
-            <?php }else{
-            //$PID="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            //if ($pid>25) $pid=25;
-            ?>
-            Problem <span class=blue><b><?php echo chr($pid+ord('A'))?></b></span> of Contest <span class=blue><b><?php echo $cid?></b></span><br>
-            <input id="cid" type='hidden' value='<?php echo $cid?>' name="cid">
-            <input id="pid" type='hidden' value='<?php echo $pid?>' name="pid">
-            <?php }?>
-            <span id="language_span">Language:
-                <select id="language" name="language" onChange="reloadtemplate(this);" >
-                <?php
-                $lang_count=count($language_ext);
-                if(isset($_GET['langmask']))
-                    $langmask=$_GET['langmask'];
-                else
-                    $langmask=$OJ_LANGMASK;
-                $lang=(~((int)$langmask))&((1<<($lang_count))-1);
-                if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
-                else $lastlang=0;
-                for($i=0;$i<$lang_count;$i++){
-                    if($lang&(1<<$i))
-                        echo"<option value=$i ".( $lastlang==$i?"selected":"").">
-                ".$language_name[$i]."
-                </option>";
-                }
-                ?>
-                </select>
-                <br>
-            </span>
-            <textarea style="width:80%" cols=180 rows=20 id="source" name="source"><?php echo htmlentities($view_src,ENT_QUOTES,"UTF-8")?></textarea><br>
-            <?php echo $MSG_Input?>:<textarea style="width:30%" cols=40 rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
-            <?php echo $MSG_Output?>:
-            <textarea style="width:30%" cols=10 rows=5 id="out" name="out" >SHOULD BE:
-                <?php echo $view_sample_output?>
-</textarea>
-            <br>
+
+
+
+<!--    <div class="jumbotron">-->
+<!--        <center>-->
+<!--            --><?php
+//            if(strpos($_SERVER['HTTP_USER_AGENT'],'MSIE'))
+//            {
+//                $OJ_EDITE_AREA=false;
+//            }
+//            if($OJ_EDITE_AREA){
+//            ?>
+<!--            <script language="Javascript" type="text/javascript" src="edit_area/edit_area_full.js"></script>-->
+<!--            <script language="Javascript" type="text/javascript">-->
+<!--                editAreaLoader.init({-->
+<!--                    id: "source"-->
+<!--                    ,start_highlight: true-->
+<!--                    ,allow_resize: "both"-->
+<!--                    ,allow_toggle: true-->
+<!--                    ,word_wrap: true-->
+<!--                    ,language: "en"-->
+<!--                    ,syntax: "cpp"-->
+<!--                    ,font_size: "12"-->
+<!--                    ,syntax_selection_allow: "basic,c,cpp,java,pas,perl,php,python,ruby"-->
+<!--                    ,toolbar: "search, go_to_line, fullscreen, |, undo, redo, |, select_font,syntax_selection,|, change_smooth_selection, highlight, reset_highlight, word_wrap, |, help"-->
+<!--                });-->
+<!--            </script>-->
+<!--            --><?php //}?>
+<!--            <script src="include/checksource.js"></script>-->
+<!--            <form id=frmSolution action="submit.php" method="post"-->
+<!--                --><?php //if($OJ_LANG=="cn"){?>
+<!--                    onsubmit="return checksource(document.getElementById('source').value);"-->
+<!--                --><?php //}?>
+<!-->-->
+<!--                --><?php //if (isset($id)){?>
+<!--                  Problem <span class=blue><b>--><?php //echo $id?><!--</b></span>-->
+<!--            <input id=problem_id type='hidden' value='--><?php //echo $id?><!--' name="id" ><br>-->
+<!--            --><?php //}else{
+//            //$PID="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//            //if ($pid>25) $pid=25;
+//            ?>
+<!--            Problem <span class=blue><b>--><?php //echo chr($pid+ord('A'))?><!--</b></span> of Contest <span class=blue><b>--><?php //echo $cid?><!--</b></span><br>-->
+<!--            <input id="cid" type='hidden' value='--><?php //echo $cid?><!--' name="cid">-->
+<!--            <input id="pid" type='hidden' value='--><?php //echo $pid?><!--' name="pid">-->
+<!--            --><?php //}?>
+<!--            <span id="language_span">Language:-->
+<!--                <select id="language" name="language" onChange="reloadtemplate(this);" >-->
+<!--                --><?php
+//                $lang_count=count($language_ext);
+//                if(isset($_GET['langmask']))
+//                    $langmask=$_GET['langmask'];
+//                else
+//                    $langmask=$OJ_LANGMASK;
+//                $lang=(~((int)$langmask))&((1<<($lang_count))-1);
+//                if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
+//                else $lastlang=0;
+//                for($i=0;$i<$lang_count;$i++){
+//                    if($lang&(1<<$i))
+//                        echo"<option value=$i ".( $lastlang==$i?"selected":"").">
+//                ".$language_name[$i]."
+//                </option>";
+//                }
+//                ?>
+<!--                </select>-->
+<!--                <br>-->
+<!--            </span>-->
+<!--            <textarea style="width:80%" cols=180 rows=20 id="source" name="source">--><?php //echo htmlentities($view_src,ENT_QUOTES,"UTF-8")?><!--</textarea><br>-->
+<!--            --><?php //echo $MSG_Input?><!--:<textarea style="width:30%" cols=40 rows=5 id="input_text" name="input_text" >--><?php //echo $view_sample_input?><!--</textarea>-->
+<!--            --><?php //echo $MSG_Output?><!--:-->
+<!--                <textarea style="width:30%" cols=10 rows=5 id="out" name="out" >SHOULD BE:-->
+<!--                    --><?php //echo $view_sample_output?>
+<!--           </textarea>-->
+<!--            <br>-->
             <input id="Submit" class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>" onclick="do_submit();" >
             <input id="TestRun" class="btn btn-info" type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span class="btn" id=result>状态</span>
-            <?php if (isset($OJ_BLOCKLY)&&$OJ_BLOCKLY){?>
+<!--            --><?php //if (isset($OJ_BLOCKLY)&&$OJ_BLOCKLY){?>
             <input id="blockly_loader" type=button class="btn" onclick="openBlockly()" value="<?php echo $MSG_BLOCKLY_OPEN?>" style="color:white;background-color:rgb(169,91,128)">
             <input id="transrun" type=button  class="btn" onclick="loadFromBlockly() " value="<?php echo $MSG_BLOCKLY_TEST?>" style="display:none;color:white;background-color:rgb(90,164,139)">
-            <div id="blockly" class="center">Blockly</div>
-            <?php }?>
-            </form>
-        </center>
-    </div>
+<!--            <div id="blockly" class="center">Blockly</div>-->
+<!--            --><?php //}?>
+<!--            </form>-->
+<!--        </center>-->
+<!--    </div>-->
 
 </div> <!-- /container -->
-
+</div>
+<?php include("oj-footer.php");?>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -376,7 +379,7 @@
         using_blockly=true;
 
     }
-    function translate(){
+   function translate(){
         var source=$("#source");
         var editor=$(window.frames['frame_source'].document).find('textarea[id=textarea]');
         var blockly=$(window.frames['frmBlockly'].document);
