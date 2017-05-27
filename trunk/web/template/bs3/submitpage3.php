@@ -25,147 +25,100 @@
 <div class="container">
     <?php include("template/$OJ_TEMPLATE/nav.php");?>
     <!-- Main component for a primary marketing message or call to action -->
-    <div class="container">
-        <div class="row-fluid text-center">
-            <?php
-            if ($pr_flag){
-                echo "<title>$MSG_PROBLEM $row_problem->problem_id. -- $row_problem->title</title>";
-                echo "<h3>$id: $row_problem->title</h3>";
-            }else{
-                $PID="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                $id=$row_problem->problem_id;
-                echo "<title>$MSG_PROBLEM $PID[$pid]: $row_problem->title </title>";
-                echo "<h3>$MSG_PROBLEM $PID[$pid]: $row_problem->title</h3>";
-            }
-            echo "<p>$MSG_Time_Limit: <span>$row_problem->time_limit Sec&nbsp;&nbsp;</span>";
-            echo "$MSG_Memory_Limit: <span>".$row_problem->memory_limit." MB</span></p>";
-            if ($row_problem->spj)
-                echo "&nbsp;&nbsp;<span class=red>Special Judge</span>";
-            echo "<p>$MSG_SUBMIT: ".$row_problem->submit."&nbsp;&nbsp;";
-            echo "$MSG_SOVLED: ".$row_problem->accepted."</p>";
-            ?>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-7" >
-                <?php
-                echo "<h3>$MSG_Description</h3>";
-                echo "<div class='row min-height'>".$row_problem->description."</div>";
-                ?>
-                <form id=frmSolution action="submit.php" method="post"
-                    <?php if($OJ_LANG=="cn"){?>
-                        onsubmit="return checksource(document.getElementById('source').value);"
+    <div class="jumbotron">
+        <form id=frmSolution action="submit.php" method="post"
+            <?php if($OJ_LANG=="cn"){?>
+                onsubmit="return checksource(document.getElementById('source').value);"
+            <?php }?>
+        >
+            <div class="container">
+                <div class="row">
+                    <?php if (isset($id)){?>
+                        <div class="col-md-2 col-md-offset-1">
+                            <label>Problem</label> <span class='label label-info'><b><?php echo $id?></b></span>
+                        </div>
+                        <input id=problem_id type='hidden'  value='<?php echo $id?>' name="id" >
+                    <?php }else{
+                        //$PID="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                        //if ($pid>25) $pid=25;
+                        ?>
+                        Problem <span class='label label-info'><b><?php echo chr($pid+ord('A'))?></b></span> of Contest <span class='label label-info'><?php echo $cid?></span>
+                        <input id="cid" type='hidden' value='<?php echo $cid?>' name="cid">
+                        <input id="pid" type='hidden' value='<?php echo $pid?>' name="pid">
                     <?php }?>
-                >
 
-                        <div class="row">
-                            <div class="col-md-6 form-inline">
-                                <div class="form-group">
-                                    <label for="language">Language:</label>
-                                    <select class="form-control" id="language" name="language" onchange="getSelected(this)">
-                                        <?php
-                                        $lang_count=count($language_ext);
+                    <div class="col-md-4 form-inline">
+                        <div class="form-group">
+                            <label for="language">Language:</label>
+                            <select class="form-control" id="language" name="language" onchange="getSelected(this)">
+                                <?php
+                                $lang_count=count($language_ext);
 
-                                        if(isset($_GET['langmask']))
-                                            $langmask=$_GET['langmask'];
-                                        else
-                                            $langmask=$OJ_LANGMASK;
+                                if(isset($_GET['langmask']))
+                                    $langmask=$_GET['langmask'];
+                                else
+                                    $langmask=$OJ_LANGMASK;
 
-                                        $lang=(~((int)$langmask))&((1<<($lang_count))-1);
-                                        if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
-                                        else $lastlang=0;
-                                        if(isset($_COOKIE['keymap'])) $keymap=$_COOKIE['keymap'];
-                                        else $keymap = 'sublime';
-                                        for($i=0;$i<$lang_count;$i++){
-                                            if($lang&(1<<$i))
-                                                echo"<option value=$i ".( $lastlang==$i?"selected":"").">
+                                $lang=(~((int)$langmask))&((1<<($lang_count))-1);
+                                if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
+                                else $lastlang=0;
+                                if(isset($_COOKIE['keymap'])) $keymap=$_COOKIE['keymap'];
+                                else $keymap = 'sublime';
+                                for($i=0;$i<$lang_count;$i++){
+                                    if($lang&(1<<$i))
+                                        echo"<option value=$i ".( $lastlang==$i?"selected":"").">
                                     ".$language_name[$i]."
                              </option>";
-                                        }
+                                }
 
-                                        ?>
-
-
-                                    </select>
-                                </div>
-                            </div>
+                                ?>
 
 
-                            <div class="col-md-6">
-                                <div class="btn-group pull-right" role="group" aria-label="...">
-                                    <button class="btn <?php if($keymap == 'sublime') echo 'btn-success' ?>" type="button" id="sublime" value="sublime" onclick="keymap(this)">Sublime</button>
-                                    <button class="btn <?php if($keymap == 'vim') echo 'btn-success' ?>" type="button" id="vim" value="vim" onclick="keymap(this)">VIM</button>
-                                    <button class="btn <?php if($keymap == 'emacs') echo 'btn-success' ?>" type="button" id="emacs" value="emacs" onclick="keymap(this)">Emacs</button>
-                                </div>
-                            </div>
-                        </div> <!-- row -->
+                            </select>
+                        </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea style="width:80%" cols=180 rows=20 id="source" name="source"><?php echo $view_src?></textarea><br>
-                            </div>
-                        </div> <!-- row -->
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <?php echo $MSG_Input?>:<textarea class="form-control" rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <?php echo $MSG_Output?>:
-                                <textarea class="form-control" rows=5 id="out" name="out" >SHOULD BE:
-                                    <?php echo $view_sample_output?>
+                    <div class="col-md-4 pull-right">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button class="btn <?php if($keymap == 'sublime') echo 'btn-success' ?>" type="button" id="sublime" value="sublime" onclick="keymap(this)">Sublime</button>
+                            <button class="btn <?php if($keymap == 'vim') echo 'btn-success' ?>" type="button" id="vim" value="vim" onclick="keymap(this)">VIM</button>
+                            <button class="btn <?php if($keymap == 'emacs') echo 'btn-success' ?>" type="button" id="emacs" value="emacs" onclick="keymap(this)">Emacs</button>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <textarea style="width:80%" cols=180 rows=20 id="source" name="source"><?php echo $view_src?></textarea><br>
+                    </div>
+                </div> <!-- row -->
+
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <?php echo $MSG_Input?>:<textarea class="form-control" rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
+                    </div>
+                    <div class="col-md-5">
+                        <?php echo $MSG_Output?>:
+                        <textarea class="form-control" rows=5 id="out" name="out" >SHOULD BE:
+                            <?php echo $view_sample_output?>
                             </textarea>
-                            </div>
-                        </div>
-                        <div class="row pull-right">
-                            <input id=Submit class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
-                            <input id=TestRun class="btn btn-info"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span  class="btn"  id=result>状态</span>
-                            <input type=reset  class="btn btn-danger" value="重置">
-                        </div>
-
-
-
-
-                </form>
-            </div>
-
-            <aside class="col-md-5">
-                <div class="widget">
-                    <h3 class="title"><?php echo $MSG_Description; ?></h3>
-                    <div>
-                        <p><?php echo $row_problem->description?></p>
                     </div>
                 </div>
-                <hr class="hr">
-                <div class="widget">
-                    <h3 class="title"><?php echo $MSG_Input;?></h3>
-                    <div >
-                        <p><?php echo $row_problem->input?></p>
-                    </div>
-                    <h3 class="title"><?php echo $MSG_Output;?></h3>
-                    <div>
-                        <p><?php echo $row_problem->output?></p>
-                    </div>
+                <div class="row">
+                    <input id=Submit class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
+                    <input id=TestRun class="btn btn-info"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span  class="btn"  id=result>状态</span>
+                    <input type=reset  class="btn btn-danger" value="重置">
                 </div>
-                <hr class="hr">
-                <div class="widget">
-                    <h3 class="title"><?php echo $MSG_Sample_Input;?></h3>
-                    <div>
-                        <p><?php echo $row_problem->sample_input?></p>
-                    </div>
-                    <h3 class="title"><?php echo $MSG_Sample_Output;?></h3>
-                    <div>
-                        <p><?php echo $row_problem->sample_output?></p>
-                    </div>
 
-                </div>
-                <hr class="hr">
-            </aside>
-        </div>
 
-    </div> <!-- /container -->
-</div>
-<?php include("oj-footer.php");?>
+            </div> <!-- container -->
+
+        </form>
+    </div>
+
+</div> <!-- /container -->
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -366,5 +319,6 @@
         editor.setOption("keyMap",id.value);
     }
 </script>
+
 </body>
 </html>

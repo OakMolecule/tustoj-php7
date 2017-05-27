@@ -36,8 +36,8 @@ body,div,ul,li,p,{
     color: #fff;
 }
 
-.widget{background:#fff;padding:10px 30px;margin-bottom:10px}
-.title{margin:10px 0px;}
+.widget{background:#fff;padding:10px 30px;margin-bottom:10px;min-height:200px;}
+.title{margin-top:20px;}
 
 .padding{
 

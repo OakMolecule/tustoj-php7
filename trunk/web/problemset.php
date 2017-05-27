@@ -115,7 +115,7 @@ while ($row=mysqli_fetch_object($result)){
         $view_problemset[$i][0]= "<div class=none> </div>";
     }
     $view_problemset[$i][1]="<div class='center'>".$row->problem_id."</div>";;
-    $view_problemset[$i][2]="<div class='left'><a href='problem.php?id=".$row->problem_id."'>".$row->title."</a></div>";
+    $view_problemset[$i][2]="<div class='left'><a href='submitpage.php?id=".$row->problem_id."'>".$row->title."</a></div>";
     $view_problemset[$i][3]="<div class='center'><nobr>".mb_substr($row->source,0,8,'utf8')."</nobr></div >";
     $view_problemset[$i][4]="<div class='center'><a href='status.php?problem_id=".$row->problem_id."&jresult=4'>".$row->accepted."</a></div>";
     $view_problemset[$i][5]="<div class='center'><a href='status.php?problem_id=".$row->problem_id."'>".$row->submit."</a></div>";
