@@ -13,7 +13,7 @@ static 	$DB_PASS="root";
 
 static 	$OJ_NAME="TUSTOJ";
 static 	$OJ_HOME="./";
-static 	$OJ_ADMIN="root@localhost";
+static 	$OJ_ADMIN="vp@mail.tust.edu.cn";
 static 	$OJ_DATA="/home/judge/data";
 static 	$OJ_BBS="discuss3";//"bbs" for phpBB3 bridge or "discuss" for mini-forum
 static  $OJ_ONLINE=false;

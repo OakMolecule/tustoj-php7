@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="/favicon.png">
 
     <title><?php echo $OJ_NAME?></title>
     <?php include("template/$OJ_TEMPLATE/css.php");?>
@@ -57,74 +57,75 @@
                         onsubmit="return checksource(document.getElementById('source').value);"
                     <?php }?>
                 >
+                    <input id=problem_id type='hidden' value='<?php echo $id?>' name="id" >
+                    <div class="row">
+                        <div class="col-md-6 form-inline">
+                            <div class="form-group">
+                                <label for="language">Language:</label>
+                                <select class="form-control" id="language" name="language" onchange="getSelected(this)">
+                                    <?php
+                                    $lang_count=count($language_ext);
 
-                        <div class="row">
-                            <div class="col-md-6 form-inline">
-                                <div class="form-group">
-                                    <label for="language">Language:</label>
-                                    <select class="form-control" id="language" name="language" onchange="getSelected(this)">
-                                        <?php
-                                        $lang_count=count($language_ext);
+                                    if(isset($_GET['langmask']))
+                                        $langmask=$_GET['langmask'];
+                                    else
+                                        $langmask=$OJ_LANGMASK;
 
-                                        if(isset($_GET['langmask']))
-                                            $langmask=$_GET['langmask'];
-                                        else
-                                            $langmask=$OJ_LANGMASK;
+                                    $lang=(~((int)$langmask))&((1<<($lang_count))-1);
+                                    if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
+                                    else $lastlang=0;
+                                    if(isset($_COOKIE['keymap']))
+                                        $keymap = $_COOKIE['keymap'];
+                                    else
+                                        $keymap = 'sublime';
 
-                                        $lang=(~((int)$langmask))&((1<<($lang_count))-1);
-                                        if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
-                                        else $lastlang=0;
-                                        if(isset($_COOKIE['keymap'])) $keymap=$_COOKIE['keymap'];
-                                        else $keymap = 'sublime';
-                                        for($i=0;$i<$lang_count;$i++){
-                                            if($lang&(1<<$i))
-                                                echo"<option value=$i ".( $lastlang==$i?"selected":"").">
+                                    for($i=0;$i<$lang_count;$i++){
+                                        if($lang&(1<<$i))
+                                            echo"<option value=$i ".( $lastlang==$i?"selected":"").">
                                     ".$language_name[$i]."
                              </option>";
-                                        }
+                                    }
 
-                                        ?>
+                                    ?>
 
 
-                                    </select>
-                                </div>
+                                </select>
                             </div>
+                        </div>
 
 
-                            <div class="col-md-6">
-                                <div class="btn-group pull-right" role="group" aria-label="...">
-                                    <button class="btn <?php if($keymap == 'sublime') echo 'btn-success' ?>" type="button" id="sublime" value="sublime" onclick="keymap(this)">Sublime</button>
-                                    <button class="btn <?php if($keymap == 'vim') echo 'btn-success' ?>" type="button" id="vim" value="vim" onclick="keymap(this)">VIM</button>
-                                    <button class="btn <?php if($keymap == 'emacs') echo 'btn-success' ?>" type="button" id="emacs" value="emacs" onclick="keymap(this)">Emacs</button>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="btn-group pull-right" role="group" aria-label="...">
+                                <button class="btn <?php if($keymap == 'sublime') echo 'btn-success' ?>" type="button" id="sublime" value="sublime" onclick="keymap(this)">Sublime</button>
+                                <button class="btn <?php if($keymap == 'vim') echo 'btn-success' ?>" type="button" id="vim" value="vim" onclick="keymap(this)">VIM</button>
+                                <button class="btn <?php if($keymap == 'emacs') echo 'btn-success' ?>" type="button" id="emacs" value="emacs" onclick="keymap(this)">Emacs</button>
                             </div>
-                        </div> <!-- row -->
+                        </div>
+                    </div> <!-- row -->
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea style="width:80%" cols=180 rows=20 id="source" name="source"><?php echo $view_src?></textarea><br>
-                            </div>
-                        </div> <!-- row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea style="width:80%" cols=180 rows=20 id="source" name="source"><?php echo $view_src?></textarea><br>
+                        </div>
+                    </div> <!-- row -->
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <?php echo $MSG_Input?>:<textarea class="form-control" rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <?php echo $MSG_Output?>:
-                                <textarea class="form-control" rows=5 id="out" name="out" >SHOULD BE:
-                                    <?php echo $view_sample_output?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?php echo $MSG_Input?>:<textarea class="form-control" rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <?php echo $MSG_Output?>:
+                            <textarea class="form-control" rows=5 id="out" name="out" >SHOULD BE:
+                                <?php echo $view_sample_output?>
                             </textarea>
-                            </div>
                         </div>
-                        <div class="row pull-right">
-                            <input id=Submit class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
-                            <input id=TestRun class="btn btn-info"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span  class="btn"  id=result>状态</span>
-                            <input type=reset  class="btn btn-danger" value="重置">
-                        </div>
-
-
-
+                    </div>
+                    <div class="row pull-right">
+                        <input id=Submit class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
+                        <input id=TestRun class="btn btn-info"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();>
+                        <span  class="btn" id="result">状态</span>
+                        <input type=reset  class="btn btn-danger" value="重置">
+                    </div>
 
                 </form>
             </div>
@@ -171,6 +172,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <?php include("template/$OJ_TEMPLATE/js.php");?>
+<script src="include/checksource.js"></script>
 <script>
     var sid=0;
     var i=0;
@@ -190,45 +192,38 @@
 
     function fresh_result(solution_id)
     {
-
-        sid=solution_id;
+        sid = solution_id;
         var xmlhttp;
-        if (window.XMLHttpRequest)
-        {// code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
         }
-        else
-        {// code for IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.onreadystatechange=function()
-        {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
-                var tb=window.document.getElementById('result');
-                var r=xmlhttp.responseText;
-                var ra=r.split(",");
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var tb = window.document.getElementById('result');
+                var r = xmlhttp.responseText;
+                var ra = r.split(",");
                 //     alert(r);
                 //     alert(judge_result[r]);
-                var loader="<img width=18 src=image/loader.gif>";
-                var tag="span";
-                if(ra[0]<4) tag="span disabled=true";
-                else tag="a";
-                tb.innerHTML="<"+tag+" href='reinfo.php?sid="+solution_id+"' class='badge badge-info' target=_blank>"+judge_result[ra[0]]+"</"+tag+">";
-                if(ra[0]<4)tb.innerHTML+=loader;
-                tb.innerHTML+="Memory:"+ra[1]+"kb&nbsp;&nbsp;";
-                tb.innerHTML+="Time:"+ra[2]+"ms";
-                if(ra[0]<4)
-                    window.setTimeout("fresh_result("+solution_id+")",2000);
+                var loader = "<img width=18 src=image/loader.gif>";
+                var tag = "span";
+                if (ra[0] < 4) tag = "span disabled=true";
+                else tag = "a";
+                tb.innerHTML = "<" + tag + " href='reinfo.php?sid=" + solution_id + "' class='badge badge-info' target=_blank>" + judge_result[ra[0]] + "</" + tag + ">";
+                if (ra[0] < 4) tb.innerHTML += loader;
+                tb.innerHTML += "Memory:" + ra[1] + "kb&nbsp;&nbsp;";
+                tb.innerHTML += "Time:" + ra[2] + "ms";
+                if (ra[0] < 4)
+                    window.setTimeout("fresh_result(" + solution_id + ")", 2000);
                 else
-                    window.setTimeout("print_result("+solution_id+")",0);
+                    window.setTimeout("print_result(" + solution_id + ")", 0);
                 count = -1;
                 document.getElementById("TestRun").disabled = false;
             }
-
-
         }
-        xmlhttp.open("GET","status-ajax.php?solution_id="+solution_id,true);
+        xmlhttp.open("GET", "status-ajax.php?solution_id=" + solution_id, true);
         xmlhttp.send();
     }
 
@@ -263,7 +258,7 @@
             problem_id.value='<?php echo $cid?>';
 
         document.getElementById("frmSolution").target="_self";
-        <?php if($OJ_LANG=="cn") echo "if(checksource(document.getElementById('source').value))";?>
+        <?php if($OJ_LANG=="cn") echo "if(checksource(document.getElementById('source').value))\n";?>
         document.getElementById("frmSolution").submit();
     }
 
@@ -272,7 +267,11 @@
     function do_test_run(){
         editor.save();
 
-        if($("#source").val() == "") return;
+        if($("#source").val() == "")
+        {
+            alert("请输入代码！！！");
+            return;
+        }
 
         if( handler_interval) window.clearInterval( handler_interval);
         var loader="<img width=18 src=image/loader.gif>";
@@ -286,12 +285,14 @@
         document.getElementById("frmSolution").target="testRun";
         // document.getElementById("frmSolution").submit();
 
-        $.post("submit.php?ajax",$("#frmSolution").serialize(),function(data){fresh_result(data);});
+        $.post("submit.php?ajax",$("#frmSolution").serialize(),function(data){
+            fresh_result(data);
+        });
+
         document.getElementById("TestRun").disabled=true;
         document.getElementById("Submit").disabled=true;
         count=8;
         handler_interval= window.setTimeout("resume();",1000);
-
     }
 
     function resume(){
@@ -308,7 +309,6 @@
             s.value="<?php echo $MSG_SUBMIT?>("+count+")";
             t.value="<?php echo $MSG_TR?>("+count+")";
             window.setTimeout("resume();",1000);
-
         }
     }
 </script>

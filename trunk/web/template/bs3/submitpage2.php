@@ -54,7 +54,7 @@
                 <?php if($OJ_LANG=="cn"){?>
                     onsubmit="return checksource(document.getElementById('source').value);"
                 <?php }?>
-
+>
                 <?php if (isset($id)){?>
                   Problem <span class=blue><b><?php echo $id?></b></span>
             <input id=problem_id type='hidden' value='<?php echo $id?>' name="id" ><br>

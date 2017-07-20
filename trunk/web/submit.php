@@ -14,7 +14,7 @@ if (isset($_POST['cid'])){
     $cid=intval($_POST['cid']);
     $sql="SELECT `problem_id` from `contest_problem` 
 				where `num`='$pid' and contest_id=$cid";
-}else{
+} else {
     $id=intval($_POST['id']);
     $sql="SELECT `problem_id` from `problem` where `problem_id`='$id' and problem_id not in (select distinct problem_id from contest_problem where `contest_id` IN (
 			SELECT `contest_id` FROM `contest` WHERE 
@@ -28,7 +28,7 @@ if (isset($_POST['cid'])){
 $res=mysqli_query($mysqli,$sql);
 if ($res&&mysqli_num_rows($res)<1&&!isset($_SESSION['administrator'])&&!((isset($cid)&&$cid<=0)||(isset($id)&&$id<=0))){
     mysqli_free_result($res);
-    $view_errors=  "Where do find this link? No such problem.<br>";
+    $view_errors = "Where do find this link? No such problem.<br>";
     require("template/".$OJ_TEMPLATE."/error.php");
     exit(0);
 }
@@ -40,7 +40,7 @@ $test_run=false;
 if (isset($_POST['id'])) {
     $id=intval($_POST['id']);
     $test_run=($id<=0);
-}else if (isset($_POST['pid']) && isset($_POST['cid'])&&$_POST['cid']!=0){
+} else if (isset($_POST['pid']) && isset($_POST['cid'])&&$_POST['cid']!=0){
     $pid=intval($_POST['pid']);
     $cid=intval($_POST['cid']);
     $test_run=($cid<0);
@@ -92,6 +92,7 @@ if (isset($_POST['id'])) {
       require("template/".$OJ_TEMPLATE."/error.php");
       exit(0);
     */
+
     $test_run=true;
 }
 $language=intval($_POST['language']);
@@ -129,8 +130,6 @@ $len=strlen($source);
 //echo $source;
 
 
-
-
 setcookie('lastlang',$language,time()+360000);
 
 $ip=$_SERVER['REMOTE_ADDR'];
@@ -150,7 +149,7 @@ if ($len>65536){
 $now=strftime("%Y-%m-%d %X",time()-10);
 $sql="SELECT `in_date` from `solution` where `user_id`='$user_id' and in_date>'$now' order by `in_date` desc limit 1";
 $res=mysqli_query($mysqli,$sql);
-if (mysqli_num_rows($res)==1){
+if (mysqli_num_rows($res)==1) {
     //$row=mysqli_fetch_row($res);
     //$last=strtotime($row[0]);
     //$cur=time();
@@ -192,7 +191,6 @@ if((~$OJ_LANGMASK)&(1<<$language)){
         $redis->connect($OJ_REDISSERVER, $OJ_REDISPORT);
         $redis->lpush($OJ_REDISQNAME,$insert_id);
     }
-
 }
 
 

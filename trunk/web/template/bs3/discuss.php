@@ -27,7 +27,7 @@ require_once("../lang/$OJ_LANG.php");
 <body>
 
 <div class="container">
-    <?php include("../template/$OJ_TEMPLATE/nav.php");?>
+    <?php include("/template/$OJ_TEMPLATE/nav.php");?>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
         <?php echo $view_discuss?>
@@ -39,6 +39,6 @@ require_once("../lang/$OJ_LANG.php");
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<?php include("../template/$OJ_TEMPLATE/js.php");?>
+<?php include("/template/$OJ_TEMPLATE/js.php");?>
 </body>
 </html>
