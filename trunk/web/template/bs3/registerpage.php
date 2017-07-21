@@ -41,7 +41,8 @@
             <div class="col-md-6 col-md-offset-3">
                 <form action="register.php" method="post">
                     <br><br>
-                    <center><table>
+                    <center>
+                        <table>
                             <!-- 用户名 -->
                             <div class="form-group">
                                 <label for="user_id" class="col-md-2 control-label"><?php echo $MSG_USER_ID ?></label>
@@ -100,11 +101,16 @@
 
                             <div class="form-group">
                                 <div class="col-md-10 col-md-offset-2">
-                                    <button name="submit" type="submit" class="btn btn-primary"><?php echo $MSG_SUBMIT ?></button>
-                                    <button name="reset" type="reset" class="btn btn-default"><?php echo $MSG_RESET ?></button>
+                                    <button name="submit" type="submit" class="btn btn-primary">
+                                        <?php echo $MSG_SUBMIT ?>
+                                    </button>
+                                    <button name="reset" type="reset" class="btn btn-default">
+                                        <?php echo $MSG_RESET ?>
+                                    </button>
                                 </div>
                             </div>
-                        </table></center>
+                        </table>
+                    </center>
                     <br><br>
                 </form>
 

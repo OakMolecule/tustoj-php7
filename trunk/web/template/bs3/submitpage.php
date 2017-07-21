@@ -96,23 +96,33 @@
 
                         <div class="col-md-6">
                             <div class="btn-group pull-right" role="group" aria-label="...">
-                                <button class="btn <?php if($keymap == 'sublime') echo 'btn-success' ?>" type="button" id="sublime" value="sublime" onclick="keymap(this)">Sublime</button>
-                                <button class="btn <?php if($keymap == 'vim') echo 'btn-success' ?>" type="button" id="vim" value="vim" onclick="keymap(this)">VIM</button>
-                                <button class="btn <?php if($keymap == 'emacs') echo 'btn-success' ?>" type="button" id="emacs" value="emacs" onclick="keymap(this)">Emacs</button>
+                                <button class="btn <?php if($keymap == 'sublime') echo 'btn-success' ?>"
+                                        type="button" id="sublime" value="sublime" onclick="keymap(this)">Sublime</button>
+                                <button class="btn <?php if($keymap == 'vim') echo 'btn-success' ?>"
+                                        type="button" id="vim" value="vim" onclick="keymap(this)">VIM</button>
+                                <button class="btn <?php if($keymap == 'emacs') echo 'btn-success' ?>"
+                                        type="button" id="emacs" value="emacs" onclick="keymap(this)">Emacs</button>
                             </div>
                         </div>
                     </div> <!-- row -->
 
                     <div class="row">
                         <div class="col-md-12">
-                            <textarea style="width:80%" cols=180 rows=20 id="source" name="source"><?php echo $view_src?></textarea><br>
+                            <textarea style="width:80%" cols=180 rows=20 id="source" name="source">
+                                <?php echo $view_src?>
+                            </textarea>
+                            <br>
                         </div>
                     </div> <!-- row -->
 
                     <div class="row">
                         <div class="col-md-6">
-                            <?php echo $MSG_Input?>:<textarea class="form-control" rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
+                            <?php echo $MSG_Input?>:
+                            <textarea class="form-control" rows=5 id="input_text" name="input_text" >
+                                <?php echo $view_sample_input?>
+                            </textarea>
                         </div>
+
                         <div class="col-md-6">
                             <?php echo $MSG_Output?>:
                             <textarea class="form-control" rows=5 id="out" name="out" >SHOULD BE:
@@ -250,9 +260,9 @@
 // if(typeof(eAL) != "undefined"){   eAL.toggle("source");eAL.toggle("source");}
 
         var mark="<?php echo isset($id)?'problem_id':'cid';?>";
-        var problem_id=document.getElementById(mark);
+        var problem_id = document.getElementById(mark);
 
-        if(mark=='problem_id')
+        if(mark == 'problem_id')
             problem_id.value='<?php echo $id?>';
         else
             problem_id.value='<?php echo $cid?>';
@@ -318,7 +328,10 @@
         value: value,
         lineNumbers: true,
         mode: "text/x-csrc",
-        keyMap: "sublime",
+        keyMap: "<?php if(isset($_COOKIE['keymap']))
+            echo $_COOKIE['keymap'];
+        else
+            echo 'sublime';?>",
         autoCloseBrackets: true,
         matchBrackets: true,
         showCursorWhenSelecting: true,
@@ -328,7 +341,7 @@
 
 
     function getSelected(sel) {
-        language = $( "#language option:selected" ).text();
+        var language = $('#language option:selected').text();
         language = language.replace(/\s/g,'');
         switch (language) {
             case 'C':

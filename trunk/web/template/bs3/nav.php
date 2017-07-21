@@ -19,23 +19,24 @@ if(file_exists("../admin/msg.txt"))
         </div>
         <div>
             <ul class="nav navbar-nav">
+                <?php $ACTIVE="class='active'"?>
                 <li>
                     <a href="<?php echo $OJ_HOME?>"><?php echo $MSG_HOME?></a>
                 </li>
                 <li>
-                    <a <?php if ($url=="problemset.php") echo "$ACTIVE";?>' href="problemset.php"><?php echo $MSG_PROBLEMS?></a>
+                    <a <?php if ($url=="problemset.php") echo "$ACTIVE";?> href="problemset.php"><?php echo $MSG_PROBLEMS?></a>
                 </li>
                 <li>
-                    <a <?php if ($url=="status.php") echo "$ACTIVE";?>' href="status.php"><?php echo $MSG_STATUS?> </a>
+                    <a <?php if ($url=="status.php") echo "$ACTIVE";?> href="status.php"><?php echo $MSG_STATUS?> </a>
                 </li>
                 <li>
-                    <a <?php if ($url=="ranklist.php") echo "$ACTIVE";?>' href="ranklist.php"><?php echo $MSG_RANKLIST?></a>
+                    <a <?php if ($url=="ranklist.php") echo "$ACTIVE";?> href="ranklist.php"><?php echo $MSG_RANKLIST?></a>
                 </li>
                 <li>
-                    <a <?php if ($url=="contest.php") echo "$ACTIVE";?>'  href="contest.php"><?php echo $MSG_CONTEST?></a>
+                    <a <?php if ($url=="contest.php") echo "$ACTIVE";?>  href="contest.php"><?php echo $MSG_CONTEST?></a>
                 </li>
                 <li>
-                    <a <?php if ($url==(isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php")) echo " $ACTIVE";?>' href="<?php echo isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php"?>"><?php echo "$MSG_FAQ"?></a>
+                    <a <?php if ($url==(isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php")) echo " $ACTIVE";?> href="<?php echo isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php"?>"><?php echo "$MSG_FAQ"?></a>
                 </li>
             </ul>
 

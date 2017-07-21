@@ -5,7 +5,7 @@ $OJ_CACHE_SHARE=false;
 require_once('./include/cache_start.php');
 require_once('./include/db_info.inc.php');
 require_once('./include/setlang.php');
-$view_title= "Welcome To Online Judge";
+$view_title = "Welcome To Online Judge";
 
 ///////////////////////////MAIN
 
@@ -27,14 +27,14 @@ if (!$result){
         $view_news.= "<tr><td><td>".$row->content."</tr>";
     }
     mysqli_free_result($result);
-    $view_news.= "<tr><td width=20%><td>This <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> OnlineJudge is a GPL product from <a href=https://github.com/zhblue/tustoj>tustoj</a></tr>";
+    $view_news.= "<tr><td width=20%><td>This <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> OnlineJudge is a GPL product from <a href=https://github.com/zhblue/hustoj>hustoj</a></tr>";
     $view_news.= "</table>";
 }
 $view_apc_info="";
 
 $sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution`  group by md order by md desc limit 100";
 $result=mysqli_query($mysqli,$sql);//mysql_escape_string($sql));
-$chart_data_all= array();
+$chart_data_all = array();
 //echo $sql;
 
 while ($row=mysqli_fetch_array($result)){
@@ -43,19 +43,16 @@ while ($row=mysqli_fetch_array($result)){
 
 $sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution` where result=4 group by md order by md desc limit 100";
 $result=mysqli_query($mysqli,$sql);//mysql_escape_string($sql));
-$chart_data_ac= array();
+$chart_data_ac = array();
 //echo $sql;
 
 while ($row=mysqli_fetch_array($result)){
     array_push($chart_data_ac,array($row['md'],$row['c']));
 }
 
-
-
-
-if(function_exists('apc_cache_info')){
+if(function_exists('apc_cache_info')) {
     $_apc_cache_info = apc_cache_info();
-    $view_apc_info =_apc_cache_info;
+    $view_apc_info = _apc_cache_info;
 }
 
 /////////////////////////Template

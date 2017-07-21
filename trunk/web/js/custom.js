@@ -396,6 +396,7 @@ jQuery(document).ready(function(){
         timer = setInterval(function() {
             timeBetweenDates(compareDate);
         }, 1000);
+        //noinspection JSAnnotator
         function timeBetweenDates(toDate) {
             var dateEntered = toDate;
             var now = new Date();
@@ -426,6 +427,7 @@ jQuery(document).ready(function(){
         timer = setInterval(function() {
             timeBetweenDates(compareDate);
         }, 1000);
+        //noinspection JSAnnotator
         function timeBetweenDates(toDate) {
             var dateEntered = toDate;
             var now = new Date();

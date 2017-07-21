@@ -84,6 +84,7 @@ $MSG_TEST_RUN="Test Running Done";
 	$MSG_SCHOOL="School";
 	$MSG_EMAIL="Email";
 	$MSG_REG_INFO="Register Information";
+	$MSG_TUST="Tianjin University of Science & Technology";
 	$MSG_VCODE="Verify Code";
 
 	//problem.php
