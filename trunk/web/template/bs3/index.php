@@ -1,11 +1,12 @@
 ﻿<html lang=<?php echo $OJ_LANG ?>>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" href="/favicon.png" >
+    <link rel="shortcut icon" href="/favicon.png">
     <title>TUST Online Judge </title>
 
     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto+Slab:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto+Slab:300,400,700"
+          rel="stylesheet">
 
     <!-- Css Plugin -->
     <link rel="stylesheet" href="template/bs3/css/bootstrap.min.css">
@@ -29,7 +30,7 @@
     <header class="kopa-header-01">
         <div class="container">
             <div class="top-header">
-                <script src="include/index_profile.php?<?php echo rand();?>" ></script>
+                <script src="include/index_profile.php?<?php echo rand(); ?>"></script>
                 <ul>
                     <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -51,23 +52,28 @@
                         <nav class="kopa-main-menu style-01">
                             <ul>
                                 <li>
-                                    <a class='btn'  href="<?php echo $OJ_HOME?>"><i class="icon-home"></i>
-                                        <?php echo $MSG_HOME?></a>
+                                    <a class='btn' href="<?php echo $OJ_HOME ?>"><i class="icon-home"></i>
+                                        <?php echo $MSG_HOME ?></a>
                                 </li>
                                 <li>
-                                    <a class='btn <?php if ($url=="problemset.php") echo "$ACTIVE";?>' href="problemset.php"><?php echo $MSG_PROBLEMS?></a>
+                                    <a class='btn <?php if ($url == "problemset.php") echo "$ACTIVE"; ?>'
+                                       href="problemset.php"><?php echo $MSG_PROBLEMS ?></a>
                                 </li>
                                 <li>
-                                    <a class='btn <?php if ($url=="status.php") echo "$ACTIVE";?>' href="status.php"><?php echo $MSG_STATUS?> </a>
+                                    <a class='btn <?php if ($url == "status.php") echo "$ACTIVE"; ?>'
+                                       href="status.php"><?php echo $MSG_STATUS ?> </a>
                                 </li>
                                 <li>
-                                    <a class='btn <?php if ($url=="ranklist.php") echo "$ACTIVE";?>' href="ranklist.php"><?php echo $MSG_RANKLIST?></a>
+                                    <a class='btn <?php if ($url == "ranklist.php") echo "$ACTIVE"; ?>'
+                                       href="ranklist.php"><?php echo $MSG_RANKLIST ?></a>
                                 </li>
                                 <li>
-                                    <a class='btn <?php if ($url=="contest.php") echo "$ACTIVE";?>'  href="contest.php"><?php echo $MSG_CONTEST?></a>
+                                    <a class='btn <?php if ($url == "contest.php") echo "$ACTIVE"; ?>'
+                                       href="contest.php"><?php echo $MSG_CONTEST ?></a>
                                 </li>
                                 <li>
-                                    <a class='btn <?php if ($url==(isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php")) echo " $ACTIVE";?>' href="<?php echo isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php"?>"><?php echo "$MSG_FAQ"?></a>
+                                    <a class='btn <?php if ($url == (isset($OJ_FAQ_LINK) ? $OJ_FAQ_LINK : "faqs.php")) echo " $ACTIVE"; ?>'
+                                       href="<?php echo isset($OJ_FAQ_LINK) ? $OJ_FAQ_LINK : "faqs.php" ?>"><?php echo "$MSG_FAQ" ?></a>
                                 </li>
                             </ul>
                         </nav>
@@ -100,7 +106,7 @@
             </div>
             <ul class="kopa-menu-click">
                 <li><a href="index.html">
-                        <?php echo "$MSG_HOME"?>
+                        <?php echo "$MSG_HOME" ?>
                     </a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="shop.html">Shop</a></li>
@@ -121,7 +127,8 @@
                     <div class="container">
                         <img src="/images/main-slider/1.png" alt="">
                         <div class="content">
-                            <h2>天津科技大学</h2><h2 class="small">Online Judge</h2>
+                            <h2>天津科技大学</h2>
+                            <h2 class="small">Online Judge</h2>
                             <p>Education is learning what you didn't even know you didn't know.</p>
                             <a href="problemset.php" class="button-01">Start A Course</a>
                             <a href="http://celitea.cn" target="_blank" class="button-01">加入我们</a>
@@ -158,7 +165,9 @@
                                     </select>
                                 </p>
                                 <p><input type="text" placeholder="Keywords..."></p>
-                                <p><button type="submit" class="button-01">Search Course</button></p>
+                                <p>
+                                    <button type="submit" class="button-01">Search Course</button>
+                                </p>
                             </form>
                         </div>
                     </div>
@@ -181,14 +190,15 @@
                                 <article class="entry-item">
                                     <div class="custom">
                                         <div class="entry-thumb">
-                                            <img src="/img/icon/2.png" alt="">
+                                            <img src="/img/icon/ICPCLogo.png" alt="">
                                         </div>
                                         <div class="entry-content">
                                             <h4 class="entry-title">
-                                                <a href="#">Awesome Courses</a>
+                                                <a href="https://icpc.baylor.edu/">国际大学生程序设计竞赛</a>
                                             </h4>
-                                            <p>Lorem ipsum dolors item amet coti adipisicing elt, sed do eimd at.</p>
-                                            <a href="#" class="button-01">view detail</a>
+                                            <p>由美国电脑协会（ACM）主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、
+                                                分析和解决问题能力的年度竞赛。</p>
+                                            <a href="https://icpc.baylor.edu/" class="button-01">view detail</a>
                                         </div>
                                     </div>
                                 </article>
@@ -196,14 +206,14 @@
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <article class="entry-item">
                                     <div class="entry-thumb">
-                                        <img src="/img/icon/3.png" alt="">
+                                        <img src="/img/icon/indexl-logo.png" alt="">
                                     </div>
                                     <div class="entry-content">
                                         <h4 class="entry-title">
-                                            <a href="#">Experienced Teachers</a>
+                                            <a href="http://dasai.lanqiao.cn/">蓝桥杯大赛</a>
                                         </h4>
                                         <p>Lorem ipsum dolors item amet coti adipisicing elt, sed do eimd at.</p>
-                                        <a href="#" class="button-01">view detail</a>
+                                        <a href="http://dasai.lanqiao.cn/" class="button-01">view detail</a>
                                     </div>
                                 </article>
                             </div>
@@ -260,8 +270,7 @@
                                     <i class="ti-user"></i>
                                     <div class="detail">
                                         <p>
-                                            <span class="intergers">10</span>
-                                            <span>k +</span>
+                                            <span class="intergers"><?php echo $num_of_reges;?></span>
                                         </p>
                                         <p>Courses</p>
                                     </div>
@@ -301,7 +310,7 @@
         </section>
         <footer class="kopa-footer style-01">
             <div class="container">
-          <span class="text-muted">如有任何问题，请联系管理员 :<a href="mailto:<?php echo $OJ_ADMIN?>">admin</a>.
+          <span class="text-muted">如有任何问题，请联系管理员 :<a href="mailto:<?php echo $OJ_ADMIN ?>">admin</a>.
               </p>All Copyright Reserved 2016-<?php echo date("Y"); ?> 本网站由计算机精英协会维护
           </span>
             </div>

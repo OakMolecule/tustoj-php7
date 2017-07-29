@@ -117,12 +117,8 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <?php echo $MSG_Input?>:
-                            <textarea class="form-control" rows=5 id="input_text" name="input_text" >
-                                <?php echo $view_sample_input?>
-                            </textarea>
+                            <?php echo $MSG_Input?>:<textarea class="form-control" rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
                         </div>
-
                         <div class="col-md-6">
                             <?php echo $MSG_Output?>:
                             <textarea class="form-control" rows=5 id="out" name="out" >SHOULD BE:
@@ -328,6 +324,7 @@
         value: value,
         lineNumbers: true,
         mode: "text/x-csrc",
+//        keyMap: "sublime",
         keyMap: "<?php if(isset($_COOKIE['keymap']))
             echo $_COOKIE['keymap'];
         else
@@ -341,7 +338,7 @@
 
 
     function getSelected(sel) {
-        var language = $('#language option:selected').text();
+        language = $( "#language option:selected" ).text();
         language = language.replace(/\s/g,'');
         switch (language) {
             case 'C':

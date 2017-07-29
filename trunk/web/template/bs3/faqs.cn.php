@@ -176,6 +176,7 @@ public class Main{
       </div>
 
     </div> <!-- /container -->
+    <?php include("oj-footer.php");?>
 
 
     <!-- Bootstrap core JavaScript

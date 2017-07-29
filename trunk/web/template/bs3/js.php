@@ -1,14 +1,14 @@
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="<?php echo $path_fix."template/$OJ_TEMPLATE/"?>jquery.min.js"></script>
+<script src="<?php echo $path_fix . "template/$OJ_TEMPLATE/" ?>jquery.min.js"></script>
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="<?php echo $path_fix."template/$OJ_TEMPLATE/"?>bootstrap.min.js"></script>
+<script src="<?php echo $path_fix . "template/$OJ_TEMPLATE/" ?>bootstrap.min.js"></script>
 
 <?php
-if(file_exists("./admin/msg.txt"))
-    $view_marquee_msg=file_get_contents($OJ_SAE?"saestor://web/msg.txt":"./admin/msg.txt");
-if(file_exists("../admin/msg.txt"))
-    $view_marquee_msg=file_get_contents($OJ_SAE?"saestor://web/msg.txt":"../admin/msg.txt");
+if (file_exists("./admin/msg.txt"))
+    $view_marquee_msg = file_get_contents($OJ_SAE ? "saestor://web/msg.txt" : "./admin/msg.txt");
+if (file_exists("../admin/msg.txt"))
+    $view_marquee_msg = file_get_contents($OJ_SAE ? "saestor://web/msg.txt" : "../admin/msg.txt");
 ?>
 <!--<script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">

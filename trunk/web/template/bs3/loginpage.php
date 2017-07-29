@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo $OJ_LANG?>">
+<html lang="<?php echo $OJ_LANG ?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +8,8 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title><?php echo $MSG_LOGIN?></title>
-    <?php include("template/$OJ_TEMPLATE/css.php");?>
+    <title><?php echo $MSG_LOGIN ?></title>
+    <?php include("template/$OJ_TEMPLATE/css.php"); ?>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -39,7 +39,7 @@
 <body style="background-color: #fff">
 
 <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>
+    <?php include("template/$OJ_TEMPLATE/nav.php"); ?>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
 
@@ -49,28 +49,36 @@
 
 
                     <div class="form-group">
-                        <label class="col-md-2 control-label"><?php echo $MSG_USER_ID?></label>
+                        <label class="col-md-2 control-label"><?php echo $MSG_USER_ID ?></label>
                         <div class="col-md-10">
-                            <input name="user_id" class="form-control" placeholder="<?php echo $MSG_USER_ID?>" type="text">
+                            <input name="user_id" class="form-control" placeholder="<?php echo $MSG_USER_ID ?>"
+                                   type="text">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-2 control-label"><?php echo $MSG_PASSWORD?></label>
-                        <div class="col-md-10"><input name="password" class="form-control" placeholder="<?php echo $MSG_PASSWORD?>" type="password"></div>
+                        <label class="col-md-2 control-label"><?php echo $MSG_PASSWORD ?></label>
+                        <div class="col-md-10"><input name="password" class="form-control"
+                                                      placeholder="<?php echo $MSG_PASSWORD ?>" type="password"></div>
                     </div>
-                    <?php if($OJ_VCODE){?>
+                    <?php if ($OJ_VCODE) { ?>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label"><?php echo $MSG_VCODE?></label>
-                            <div class="col-md-10"><input name="vcode" class="form-control" type="text"></div><div class="col-sm-4"><img alt="click to change" src="vcode.php" onclick="this.src='vcode.php?'+Math.random()" height="30px">*</div>						</div>
-                    <?php }?>
+                            <label class="col-md-2 control-label"><?php echo $MSG_VCODE ?></label>
+                            <div class="col-md-10"><input name="vcode" class="form-control" type="text"></div>
+                            <div class="col-sm-4"><img alt="click to change" src="vcode.php"
+                                                       onclick="this.src='vcode.php?'+Math.random()" height="30px">*
+                            </div>
+                        </div>
+                    <?php } ?>
                     <div class="form-group">
                         <div class="col-md-10 col-md-offset-2">
-                            <button name="submit" type="submit" class="btn btn-default btn-block"><?php echo $MSG_LOGIN; ?></button>
+                            <button name="submit" type="submit"
+                                    class="btn btn-default btn-block"><?php echo $MSG_LOGIN; ?></button>
                         </div>
                         <div class="col-md-10 col-md-offset-2">
-                            <a class="btn btn-default btn-block" href="lostpassword.php"><?php echo $MSG_LOST_PASSWORD; ?></a>
+                            <a class="btn btn-default btn-block"
+                               href="lostpassword.php"><?php echo $MSG_LOST_PASSWORD; ?></a>
                         </div>
                     </div>
                 </form>
@@ -79,13 +87,13 @@
     </div>
 </div> <!-- /container -->
 <div style="height: 20px;"></div>
-<?php include("oj-footer.php");?>
+<?php include("oj-footer.php"); ?>
 
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<?php include("template/$OJ_TEMPLATE/js.php");?>
+<?php include("template/$OJ_TEMPLATE/js.php"); ?>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -93,12 +101,13 @@
         crossorigin="anonymous"></script>
 
 <script language="javascript" type="text/javascript" src="include/jquery.flot.js"></script>
-<script language="javascript" type="text/javascript" src="template/bs3/css/bootstrap-material-design/js/material.min.js">
+<script language="javascript" type="text/javascript"
+        src="template/bs3/css/bootstrap-material-design/js/material.min.js">
 </script>
-<script src="template/bs3/css/bootstrap-material-design/js/ripples.min.js" ></script>
+<script src="template/bs3/css/bootstrap-material-design/js/ripples.min.js"></script>
 
 <script>
-    $("input").attr("class","form-control");
+    $("input").attr("class", "form-control");
     $.material.init();
 </script>
 </body>
