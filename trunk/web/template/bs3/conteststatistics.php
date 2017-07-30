@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="../../favicon.png">
 
     <title><?php echo $OJ_NAME?></title>  
     <?php include("template/$OJ_TEMPLATE/css.php");?>	    

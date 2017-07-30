@@ -46,7 +46,7 @@ handlers:
 
 # Favicon.
 - url: /favicon\.ico
-  static_files: favicon.ico
+  static_files: favicon.png
   upload: favicon\.ico
   secure: always
   expiration: "30d"

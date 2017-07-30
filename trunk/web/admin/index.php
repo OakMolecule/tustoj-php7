@@ -1,12 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>JudgeOnline Administration</title>
+    <title>JudgeOnline Administration</title>
+    <link rel="icon" href="../favicon.png">
 </head>
 <frameset cols="20,90">
-<frame name="menu" src="menu.php">
-<frame name="main" src="about:blank">
-<noframes>
+    <frame name="menu" src="menu.php">
+    <frame name="main" src="about:blank">
+    <noframes>
 
-</noframes>
+    </noframes>
 </frameset>
 </html>
